@@ -56,21 +56,23 @@ public class GameManager : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         
         if(other.CompareTag("Cuyes")){
-            numplayer++;
+            
 
-            if(!isPlaying && numplayer==3){
+            if(numplayer==3){
                 isPlaying=true;
-                numplayer=0;
+                
             }
-            else if(isPlaying){
+            if(isPlaying){
                 if(waitWinner){
                     Debug.Log(other.GetComponent<CuyManager>().colorCuy);
                     OnWinnerReady?.Invoke(other.GetComponent<CuyManager>().colorCuy);
                     waitWinner=false;
+                    numplayer=1;
                 }
                 
                 if(numplayer==3)Time.timeScale=0;
             }
+            numplayer++;
 
             
 

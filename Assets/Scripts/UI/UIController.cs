@@ -11,6 +11,7 @@ public class UIController : MonoBehaviour
     [SerializeField]GameObject winPanel;
     [SerializeField]Text winName;
     private void Start() {
+        Time.timeScale=0;
         winPanel.SetActive(false);
     }
 
@@ -39,6 +40,9 @@ public class UIController : MonoBehaviour
 
     public void RestartGame(){
         SceneManager.LoadScene("SampleScene");
+    }
+    public void StartTime(){
+        Time.timeScale=1;
     }
     
 

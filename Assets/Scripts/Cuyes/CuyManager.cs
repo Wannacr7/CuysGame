@@ -23,18 +23,18 @@ public class CuyManager : MonoBehaviour
     
 
     private void Update() {
-
-        Look(targetPos);
+        targetPos = new Vector2(transform.localPosition.x, transform.localPosition.y);
+        
     }
     private void LateUpdate() {
+        Look(targetPos);
         
-        targetPos = new Vector2(transform.localPosition.x, transform.localPosition.y);
     }
 
     private void Look(Vector2 targetPosition)
     {
         Vector2 thisPosition = new Vector2(transform.localPosition.x, transform.localPosition.y);
-        Vector2 forward = thisPosition - targetPosition;
+        Vector2 forward = thisPosition-targetPosition;
         float radians = Mathf.Atan2(forward.y, forward.x);
         RotateZ(radians);
     }
